@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" sizes="16x16">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Apple SD Gothic Neo,arial,sans-serif;
+            font-size: 14px;
+        }
+        div {
+            margin: 0;
+            padding: 0;
+        }
+        .fullscreen {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 0;
+
+        }
+        .header {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: row;
+            height: 60px;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: auto;
+            padding: 6px;
+        }
+        .header1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .header2 {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 13px;
+        }
+        .header a {
+            display: inline-block;
+            text-decoration: none;
+            color: rgba(0,0,0,.87);
+            padding: 5px;
+        }
+        a:hover {
+            text-decoration-line: underline;
+        }
+        .a1 {
+            margin: 0 5px 0 15px;
+        }
+        .a2 {
+            margin: 0 5px;
+        }
+        .a3 {
+            margin: 0 0 0 15px;
+        }
+        .a4 {
+            margin: 0 15px;
+        }
+        .menu {
+            display: flex;
+            height: 24px;
+            width: 24px;
+            border-radius: 50px;
+            align-items: center;
+            padding: 8px;
+            justify-content: center;
+            margin: 4px;
+            position: relative;
+        }
+        .exmenu {
+            background-color: rgba(60,64,67,.9);
+            color: #fff;
+            border-radius: 5px;
+            padding: 3px 8px;
+            position: absolute;
+            top: 100%;
+            margin: 4px;
+            font-family: "Roboto", arial, sans-serif;
+            font-size: 12px;
+            text-align: center;
+            display: none;
+        }
+        .menu:hover {
+            background-color: #f0f0f0;
+        }
+        .menu:hover .exmenu {
+            display: block;
+        }
+        .propile {
+            border-radius: 50px;
+            padding: 4px;
+            margin: 4px;
+            position: relative;
+        }
+        .expropile {
+            background-color: rgba(60,64,67,.9);
+            color: #fff;
+            border-radius: 5px;
+            padding: 3px 8px;
+            position: absolute;
+            margin: 4px;
+            top: 100%;
+            left: -150%;
+            font-family: "Roboto", arial, sans-serif;
+            font-size: 12px;
+            display: none;
+            font: 500 12px "Roboto",arial,sans-serif;
+            
+        }
+        .expropile .p {
+            color: #c7cbcf;
+        }
+        .propile:hover .expropile {
+            display: block;
+        }
+        .propile:hover {
+            background-color: #f0f0f0;
+        }
+        .logo {
+            display: flex;
+            height: 290px;
+            width: 100%;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        img {
+            display: flex;
+            width: 272;
+            height: 92;
+        }
+        .main {
+            display: flex;
+            box-sizing: border-box;
+            height: 160px;
+            width: 100%;
+            padding: 20px;
+            align-items: center;
+            flex-direction: column;
+        }
+        .search {
+            display: flex;
+            box-sizing: border-box;
+            width: 584px;
+            height: 48px;
+            border-radius: 24px;
+            background-color: #fff;
+            border: 1px solid #dfe1e5;
+            margin: 6px 0 0;
+            flex-direction: row;
+            align-items: center;
+        }
+        .search:hover {
+            box-shadow: 0px 1px 4px 1px rgb(220, 220, 221);
+        }
+        .searchiconbox {
+            display: flex;
+            height: 26px;
+            width: 20px;
+            margin: 10px 14px 10px 16px;
+            align-items: center;
+        }
+        .searchicon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text {
+            padding: 0 8px 0 0;
+            width: 380px;
+            height: 28px;
+            margin: 0 34px 2px 0;
+            display: flex;
+            border: none;
+            resize: none;
+            outline: none;
+            font-family: Apple SD Gothic Neo,arial,sans-serif;
+            word-wrap: break-word;
+            font-size: 16px;
+            background-color: transparent;
+            text-justify: center;
+        }
+        /* input[type=search]::-webkit-search-cancel-button {
+            display: none;
+        }
+        .x {
+            padding: 0 12px;
+            cursor: pointer;
+            display: non;
+        } */
+        .bar {
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .keyword {
+            display: flex;
+            height: 88px;
+            width: 584px;
+            padding: 18px 0 0;
+            justify-content: center;
+        }
+        .k {
+            box-sizing: border-box;
+            height: 36px;
+            background-color: #F8F9FA;
+            text-align: center;
+            padding: 0 16px;
+            margin: 11px 4px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            border: none;
+            color: #3c4043;
+            border: 1px solid #F8F9FA;
+        }
+        .k:hover {
+            border: 1px solid #caccd1;
+            border-bottom: 2px solid #caccd1;
+        }
+        .nothing {
+            display: flex;
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+            font-size: 14px;
+        }
+        .f1 {
+            padding: 15px 30px;
+            color: #70757a;
+            border-bottom: 1px solid #dadce0;
+        }
+        .f2 {
+            display: flex;
+            flex-direction: row;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        .footer a {
+            display: inline-block;
+            text-decoration: none;
+            color: #70757a;
+            padding: 15px;
+        }
+        .footer a:hover {
+            text-decoration-line: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen">
+        <div class="header">
+            <div class="header1">
+                <a class="a1" href="https://about.google/?fg=1&utm_source=google-KR&utm_medium=referral&utm_campaign=hp-header">Google 정보</a>
+                <a class="a2" href="https://store.google.com/KR/?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=ko-KR">스토어</a>
+            </div>
+            <div class="header2">
+                <a class="a3" href="https://mail.google.com/mail/u/0/?ogbl">Gmail</a>
+                <a class="a4" href="https://www.google.co.kr/imghp?hl=ko&authuser=0&ogbl">이미지</a>
+                <div class="menu">
+                    <img src="./dots-menu.png" style="display: flex; height: 16px; width: 16px; justify-content: center; align-items: center;">
+                    <div class="exmenu" style="width: 60px;">Google 앱</div>
+                </div>                
+                <div class="propile">
+                    <img class="image" src="./다운로드.jpeg" style="border-radius: 50px; height: 32px;">
+                    <div class="expropile">Google 계정<div class="p">사용자<br>user@gamil.com</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+        </div>
+        <div class="main">
+            <div class="search">
+                <div class="searchiconbox">
+                    <img src="./search-icon-png-9982.png" class="searchicon" style="height: 14px; width: 14px;"></img>
+                </div>
+                <form action="https://www.google.com/search">
+                    <input type="search" name="q" class="text" rows="10" title="검색"></input>
+                </form>
+                <!-- <div class="x">
+                    <img src="./close.png" style="height: 14px; width: 14px;">
+                </div> -->
+                <div class="bar">
+                    <div class="keyboard">
+                        <img src="./Group 20.png" style="height: 12px;" title="입력 도구">
+                    </div>
+                    <img class="voise" src="./7611756.png" style="height: 30px;" title="음성 검색">
+                    <img class="camera" src="./7611773.png" style="height: 30px;" title="이미지로 검색">
+                </div>
+            </div>
+            <div class="keyword">
+                <input type="button" value="Google 검색" class="k"></input>
+                <input type="button" value="I'm Feeling Lucky" class="k"></input>
+            </div>
+        </div>
+        <div class="nothing"></div>
+        <div class="footer">
+            <div class="f1">대한민국</div>
+            <div class="f2">
+                <div class="f21">
+                    <a href="https://ads.google.com/intl/ko_kr/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2m--ahpm-0000000133-0000000000&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">광고</a>
+                    <a href="https://www.google.com/intl/ko_kr/business/">비즈니스</a>
+                    <a href="https://www.google.com/search/howsearchworks/?fg=1">검색의 원리</a>
+                </div>
+                <div class="f22">
+                    <a href="https://policies.google.com/privacy?hl=ko&fg=1">개인정보처리방침</a>
+                    <a href="https://policies.google.com/terms?hl=ko&fg=1">약관</a>
+                    <a href="">설정</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
