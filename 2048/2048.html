@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <style>
+        body {
+            background-color: #0faa9b;
+            font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+        }
+        .background {
+            display: flex;
+            width: 540px;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 30px;
+            flex-direction: column;
+            background-color: #EFFFE9;
+            padding: 20px;
+            justify-content: center;
+            border-radius: 14px;
+        }
+        .header {
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 20px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            font-size: 80px;
+            color: #011627;
+            margin: 0;
+        }
+        .number {
+            display: flex;
+            width: auto;
+            height: 100px;
+            padding: 10px;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+        }
+        .scorebox {
+            box-sizing: border-box;
+            width: 100px;
+            height: auto;
+            background-color: #2EC4B6;
+            border-radius: 6px;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+        }
+        .BESTbox {
+            box-sizing: border-box;
+            width: 100px;
+            height: auto;
+            background-color: #2EC4B6;
+            border-radius: 6px;
+            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+        }
+        .p1 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #EFFFE9;
+        }
+        .nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: auto;
+            height: auto;
+            padding: 0 20px;
+            align-items: center;
+        }
+        p {
+            margin: 0;
+        }
+        .newgame {
+            display: flex;
+            box-sizing: border-box;
+            height: 40px;
+            width: 128px;
+            background-color: #E71D36;
+            border-radius: 6px;
+            margin: 0 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .newgamep {
+            color: #EFFFE9;
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .newgame:hover {
+            cursor: pointer;
+        }
+        #board {
+            box-sizing: border-box;
+            height: auto;
+            width: auto;
+            margin: 20px;
+            border-radius: 6px;
+            padding: 10px 10px 0 10px;
+            flex-direction: column;
+            gap: 10px;
+        }
+        tr {
+            display: flex;
+            height: 106.25px;
+            width: auto;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            margin: 0 0 10px 0;
+        }
+        td {
+            height: 106.25px;
+            width: 106.25px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+</style>
+</head>
+<body>
+    <div class="background">
+        <div class="header">
+            <h1>2048</h1>
+            <div class="number">
+                <div class="scorebox">
+                    <p class="p1">SCORE</p>
+                    <p id="score">0</p>
+                </div>
+                <div class="BESTbox">
+                    <p class="p1">BEST</p>
+                    <p id="BEST">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <p>MADE BY <b>KIMEOJIN</b></p>
+            <div id="newgame">
+                <p class="newgamep">NEW GAME</p>
+            </div>
+        </div>
+        <table id="board" border="0" style="font-size: 40px; font-weight: 800;">
+            <tr>
+                <td id="00"></td>
+                <td id="01"></td>
+                <td id="02"></td>
+                <td id="03"></td>
+            </tr>
+            <tr>
+                <td id="04"></td>
+                <td id="05"></td>
+                <td id="06"></td>
+                <td id="07"></td>
+            </tr>
+            <tr>
+                <td id="08"></td>
+                <td id="09"></td>
+                <td id="10"></td>
+                <td id="11"></td>
+            </tr>
+            <tr>
+                <td id="12"></td>
+                <td id="13"></td>
+                <td id="14"></td>
+                <td id="15"></td>
+            </tr>
+        </table>
+    </div>
+    <script src="./2048.js"></script>
+</body>
+</html>
