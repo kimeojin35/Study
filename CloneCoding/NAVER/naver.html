@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="./images/favicon (1).ico"
+      type="image/x-icon"
+      sizes="16x16"
+    />
+    <title>NAVER</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic",
+          "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+        font-size: 14px;
+      }
+      button {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        background-color: transparent;
+        border: none;
+      }
+      .fullscreen {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .screen {
+        display: flex;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        background-color: brown;
+        align-items: center;
+        flex-direction: column;
+      }
+      .header {
+        display: flex;
+        width: 1300px;
+        height: 260px;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header-top {
+        display: flex;
+        height: 40px;
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-top: 26px;
+      }
+      .menubutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-color: transparent;
+        background-size: 422px 405px;
+        background-position: -335px -284px;
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 26px;
+        position: relative;
+        border: none;
+      }
+      .rightbutton {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+      }
+      .buttonbox {
+        display: flex;
+        box-sizing: border-box;
+        width: 46px;
+        height: 46px;
+        border-radius: 100px;
+        background-color: #fff;
+        align-items: center;
+        justify-content: center;
+      }
+      .buttonbox:hover {
+        background-color: #f8f8f8;
+      }
+      .paybutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -31px -316px;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 26px;
+        position: relative;
+      }
+      .alarmbutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-color: transparent;
+        background-size: 422px 405px;
+        background-position: -364px -27px;
+        background-repeat: no-repeat;
+        width: 26px;
+        height: 26px;
+        position: relative;
+        outline: none;
+        border: none;
+      }
+      .header-search {
+        display: flex;
+        width: 1280px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+      }
+      .search {
+        display: flex;
+        box-sizing: border-box;
+        width: 708px;
+        height: 60px;
+        border-radius: 33px;
+        border: 1px solid #03c75a;
+        background-color: #fff;
+        align-items: center;
+        padding: 20px 0;
+      }
+      .searchinput::placeholder {
+        color: rgb(233, 233, 233);
+      }
+      .search:hover {
+        box-shadow: 0 2px 3px 0 rgba(114, 114, 114, 0.2);
+      }
+      .navericon {
+        padding: 17px 17px 17px 27px;
+        margin: 0 12px 0 0;
+      }
+      .searchinput {
+        width: 480px;
+        height: 58px;
+        outline: none;
+        border: none;
+        padding: 17px 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic",
+          "ë§‘ì€ ê³ ë”•", helvetica, "Apple SD Gothic Neo", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0 25px 0 0;
+      }
+      .searchinput::placeholder {
+        color: #fff;
+      }
+      .keyboardbutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -270px -234px;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 16px;
+        margin: 21px 7px 21px 3px;
+      }
+      .rowbutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -412px -313px;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 6px;
+        margin: 26px 6px;
+      }
+      .searchbutton {
+        display: block;
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -364px -132px;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        margin: 17px 27px 16px 10px;
+      }
+      .header-bottom {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        padding: 12px 14px 14px 14px;
+        gap: 20px;
+      }
+      .header-bottom p {
+        margin: 0;
+        padding: 0;
+      }
+      .iconflex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .iconflex:hover .iconbox {
+        box-shadow: 0px 2px 3px 2px rgba(114, 114, 114, 0.2);
+      }
+      .iconbox {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background-color: #fff;
+        box-shadow: 0 2px 0 1px rgba(114, 114, 114, 0.068);
+        outline: 1px solid #f3f3f3;
+      }
+      .icon1 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -250px -90px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon2 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -250px 0px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon3 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -201px -98px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon4 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -90px -209px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon5 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: 0px -209px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon6 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -180px -209px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon7 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -45px -209px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon8 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -201px 0px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .icon9 {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -225px -209px;
+        background-repeat: no-repeat;
+        width: 44px;
+        height: 44px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .morebox {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background-color: #fff;
+        box-shadow: 0 2px 0 1px rgba(114, 114, 114, 0.068);
+        outline: 1px solid #ececec;
+      }
+      .iconmore {
+        background-image: url(https://pm.pstatic.net/resources/asset/sp_main.30918f90.png);
+        background-size: 422px 405px;
+        background-position: -201px -172px;
+        background-repeat: no-repeat;
+        width: 22px;
+        height: 6px;
+        background-color: transparent;
+        margin: 2px;
+      }
+      .morebox:hover {
+        background-color: #f8f8f8;
+        box-shadow: 0px 2px 3px 2px rgba(114, 114, 114, 0.2);
+      }
+      .header-bottom p {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+      .main {
+        display: flex;
+        width: 1280px;
+        height: auto;
+        background-color: #fff;
+        flex-direction: row;
+        padding: 0 10px;
+      }
+      .mainleft {
+        display: flex;
+        width: 830px;
+        height: auto;
+        flex-direction: column;
+      }
+      .newsbox {
+        height: 426px;
+        width: 830px;
+        background-color: aqua;
+        margin-top: 16px;
+        border: 1px solid #e3e5e8;
+        border-radius: 8px;
+      }
+      .shoppingbox {
+        width: 830px;
+        height: 560px;
+        background-color: bisque;
+        margin-top: 16px;
+        border-radius: 8px;
+      }
+      .culturebox {
+        margin-top: 16px;
+        width: 830px;
+        height: 1355px; /*auto 변경*/
+        background-color: #fff;
+        margin-bottom: 60px;
+        border-radius: 8px;
+      }
+      .mainright {
+        display: flex;
+        margin-left: 30px;
+        width: 420px;
+        height: auto;
+        background-color: #03c75a;
+        margin-bottom: 60px;
+        flex-direction: column;
+      }
+      .propilebox {
+        width: 420px;
+        height: 164px;
+        background-color: rebeccapurple;
+        margin-bottom: 16px;
+        border-radius: 8px;
+      }
+      .weatherbox {
+        width: 420px;
+        height: 236px;
+        margin-top: 16px;
+        border-radius: 8px;
+        background-color: antiquewhite;
+      }
+      .stockbox {
+        width: 420px;
+        height: 236px;
+        margin-top: 16px;
+        border-radius: 8px;
+        background-color: antiquewhite;
+      }
+      .footer {
+        display: flex;
+        width: 100%;
+        height: 450px;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fullscreen">
+      <div class="screen">
+        <div class="header">
+          <div class="header-top">
+            <div class="buttonbox">
+              <button type="button" class="menubutton"></button>
+            </div>
+            <div class="rightbutton">
+              <div class="buttonbox">
+                <a
+                  href="https://order.pay.naver.com/home"
+                  class="paybutton"
+                  target="_blank"
+                ></a>
+              </div>
+              <div class="buttonbox">
+                <button type="button" class="alarmbutton"></button>
+              </div>
+            </div>
+          </div>
+          <div class="header-search">
+            <div class="search">
+              <img
+                src="./images/Vector 10.png"
+                class="navericon"
+                style="height: 24px; height: 24px"
+              />
+              <form
+                action="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&"
+              >
+                <input
+                  type="search"
+                  class="searchinput"
+                  placeholder="검색어를 입력해 주세요."
+                  title="검색어를 입력해 주세요."
+                  name="query"
+                />
+              </form>
+              <button class="keyboardbutton" type="button"></button>
+              <button class="rowbutton" type="button"></button>
+              <button class="searchbutton" type="button"></button>
+            </div>
+          </div>
+          <div class="header-bottom">
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon1"></div>
+              </div>
+              <p>메일</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon2"></div>
+              </div>
+              <p>카페</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon3"></div>
+              </div>
+              <p>블로그</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon4"></div>
+              </div>
+              <p>쇼핑</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon5"></div>
+              </div>
+              <p>뉴스</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon6"></div>
+              </div>
+              <p>증권</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon7"></div>
+              </div>
+              <p>부동산</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon8"></div>
+              </div>
+              <p>지도</p>
+            </div>
+            <div class="iconflex">
+              <div class="iconbox">
+                <div class="icon9"></div>
+              </div>
+              <p>웹툰</p>
+            </div>
+            <div class="iconflex">
+              <div class="morebox">
+                <div class="iconmore"></div>
+              </div>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="mainleft">
+            <img
+              src="https://ssl.pstatic.net/melona/libs/1452/1452198/d411782bb9f4d5f4166a_20230531105955739.jpg"
+              style="height: 130px; width: 830px; border-radius: 8px; margin: 0"
+            />
+            <div class="newsbox"></div>
+            <div class="shoppingbox"></div>
+            <div class="culturebox"></div>
+          </div>
+          <div class="mainright">
+            <div class="propilebox"></div>
+            <img
+              src="https://ssl.pstatic.net/melona/libs/1449/1449872/b45321cb95f6d950c38d_20230509110449810.jpg"
+              style="
+                width: 420px;
+                height: 240px;
+                border-radius: 8px;
+                border: 1px solid #e3e5e8;
+              "
+            />
+            <div class="weatherbox"></div>
+            <div class="stockbox"></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>
