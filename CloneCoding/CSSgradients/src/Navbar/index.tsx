@@ -1,6 +1,6 @@
 import React from "react";
 import * as _ from './style';
-import Logo from './logo.svg';
+import { ReactComponent as Logo } from "./Logo.svg";
 
 function Nav() {
   return (
@@ -10,14 +10,14 @@ function Nav() {
           <Logo />
           CSS Gradient
         </_.HeaderLogo>
-        <_.HeaderBox>
+        <_.HeaderListBox>
           <_.HeaderList>ILLUSTRATIONS</_.HeaderList>
           <_.HeaderList>COLOR SHADES</_.HeaderList>
           <_.HeaderList>BACKGROUNDS</_.HeaderList>
           <_.HeaderList>SWATCHES</_.HeaderList>
           <_.HeaderList>BLOG</_.HeaderList>
-          <_.HeaderList>SMART LAYOUTS<_.NewListIcon>NEW</_.NewListIcon></_.HeaderList>
-        </_.HeaderBox>
+          <_.HeaderList>SMART LAYOUTS <_.NewIcon>NEW</_.NewIcon></_.HeaderList>
+        </_.HeaderListBox>
       </_.HeaderBox>
     </_.Header>
   )

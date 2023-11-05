@@ -1,11 +1,15 @@
 import React from 'react';
-import './App.css';
 import Nav from './Navbar/index';
-
+import * as _ from './style';
+import Main from './Main';
 
 function App() {
   return (
-    <Nav></Nav>
+    <>
+    <Nav />
+    <_.BannerBox />
+    <Main />
+    </>
   );
 }
 
