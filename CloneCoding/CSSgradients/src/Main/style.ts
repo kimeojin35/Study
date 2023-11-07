@@ -17,21 +17,20 @@ export const ShowGradient = styled.div`
 
 export const AngleBox = styled.div`
   border-radius: 100px;
-  width: 100px;
-  height: 100px;
-  border: 2px solid #000;
+  width: 36px;
+  height: 36px;
+  border: 3px solid #1f2667;
   position: relative;
 
   display: flex;
-  padding: 20px;
+  padding: 5px;
   box-sizing: border-box;
   margin: 10px;
 `;
 
 export const AnglePointBox = styled.div`
-  width: 100%;
   height: 100%;
-  background-color: aqua;
+  width: 100%;
   border-radius: 100px;
   transform: rotate(45deg);
 `;
@@ -40,9 +39,21 @@ export const AnglePoint = styled.div`
   position: absolute;
   position: fixed;
   border-radius: 100px;
-  width: 10px;
-  height: 10px;
-  background-color: #000;
+  width: 6px;
+  height: 6px;
+  background-color: #1f2667;
 `;
 
-export const Input = styled.input``;
+export const InputAngle = styled.input`
+  margin-left: 24px;
+  width: 54px;
+  height: 42px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid #bbbfc5;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 600;
+  color: #1f2667;
+  font-size: 100%;
+`;
