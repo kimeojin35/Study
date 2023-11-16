@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const MainBackground = styled.div``;
+export const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+`;
 
 export const ShowGradient = styled.div`
   width: 100%;
@@ -14,6 +19,13 @@ export const ShowGradient = styled.div`
     rgb(252, 176, 69) 100%
   );
 `;
+
+export const SetGradientContainer = styled.div``;
+
+export const GradientBarBox = styled.div``;
+export const ColorBox = styled.div``;
+export const SetAngleBox = styled.div``;
+export const AngleContainer = styled.div``;
 
 export const AngleBox = styled.div`
   border-radius: 100px;
