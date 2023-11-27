@@ -7,18 +7,26 @@ export const metadata = {
   description: 'Kimain',
 }
 
-export default function RootLayout({
+interface Topic {
+  id: string
+  title: string
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+    const resp = await fetch('http://localhost:9999/topics');
+    const topics = await resp.json();
   return (
     <html>
       <body>
         <h1><a href="/">WEB</a></h1>
         <ol>
-          <li><Link href="/read/1">html</Link></li>
-          <li><Link href="/read/2">css</Link></li>
+          {topics.map((topic:Topic) => {
+            return <li key={topic.id}><Link href={`/read/${topic.id}`}>{topic.title}</Link></li>
+          })}
         </ol>
           {children}
           <ul>
