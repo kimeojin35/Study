@@ -2,12 +2,12 @@ import React from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 
-function App() {
+function MyApp() {
   const 꺼내온거 = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
     <div className="App">
-      <p>님의 몸무게 : {꺼내온거}</p>
+      <p>님의 몸무게: {꺼내온거}</p>
       <button
         onClick={() => {
           dispatch({ type: "증가" });
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default MyApp;

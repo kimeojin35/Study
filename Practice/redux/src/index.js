@@ -1,28 +1,13 @@
-import React, { ReactDOM } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "react-redux";
-import App from "./App";
-
-const 체중 = 100;
-
-function reducer(state = 체중, action) {
-  if (action.type === "증가") {
-    state++;
-    return state;
-  } else if (action.type === "감소") {
-    state--;
-    return state;
-  } else {
-    return state;
-  }
-}
-
-let store = createStore(reducer);
+import store from "./reduxStore"; // reduxStore.js에서 스토어 가져오기
+import MyApp from "./MyApp"; // 이름이 변경된 컴포넌트 가져오기
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <MyApp />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
