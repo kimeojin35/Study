@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="target" name="text1" />
+      <input type="submit" value="제출" onclick="process()" />
+    </form>
+    <script>
+      function process() {
+        // let obj = document.getElementById("target");
+        // let obj = document.myform.text1;
+        let obj = document.forms[0].elements[0];
+        alert(obj.value);
+      }
+    </script>
+  </body>
+</html>

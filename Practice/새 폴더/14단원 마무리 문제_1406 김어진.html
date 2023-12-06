@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box4,
+      #box3 {
+        border-radius: 10px;
+        border: 1px solid #000;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box4">
+      <h1>4의 배수일까 아닐까</h1>
+      <p id="content4"></p>
+      <button type="button" onclick="find4()">prompt</button>
+    </div>
+    <div id="box3">
+      <h1>3의 배수 찾기</h1>
+      <p id="content3"></p>
+      <button type="button" onclick="find3()">prompt</button>
+    </div>
+    <script>
+      function find4() {
+        let num = prompt("숫자를 입력하시오.");
+        let n4 = document.getElementById("content4");
+        if (num % 4 == 0) {
+          n4.innerText = `${num}은 4의 배수입니다.`;
+        } else {
+          n4.innerText = `${num}은 4의 배수가 아닙니다.`;
+        }
+      }
+
+      function find3() {
+        let num = prompt("몇 까지 3의 배수를 찾을까요?");
+        let n3 = document.getElementById("content3");
+        let result = "";
+        let n = 0;
+        for (let i = 3; i <= num; i += 3) {
+          result += `${i} `;
+          n++;
+        }
+        n3.innerText = `${result}\n`;
+        n3.innerText += `${num}까지 3의 배수의 개수: ${n}`;
+      }
+    </script>
+  </body>
+</html>
