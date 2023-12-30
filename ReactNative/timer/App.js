@@ -1,20 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import arrow1 from "./icons/arrow1";
+import { Add, LeftArrow, More } from "./src/res";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
-        <Text>냐냐</Text>
-        <Text>냐냐</Text>
+        <LeftArrow />
+        <View style={styles.topBarBox}>
+          <Add />
+          <More />
+        </View>
       </View>
       <View style={styles.main}></View>
       <View style={styles.bottomBar}>
-        <View>
-          <Text>타이머</Text>
+        <View style={styles.bottomBarBox}>
+          <Text style={}>타이머</Text>
         </View>
-        <View>
+        <View style={styles.bottomBarBox}>
           <Text>메트로놈</Text>
         </View>
       </View>
@@ -44,13 +47,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#ff0",
   },
+  topBarBox: {
+    flexDirection: "row",
+    gap: 12,
+  },
   main: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f00",
+    backgroundColor: "#fff",
     width: "100%",
     height: "100%",
+    padding: [40, 0],
   },
   bottomBar: {
     width: "100%",
@@ -59,5 +67,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 30,
     flexDirection: "row",
+    padding: [10, 4],
   },
+  bottomBarBox: {
+    padding: [8, 20],
+  },
+  
 });
