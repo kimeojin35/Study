@@ -1,76 +1,159 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Add, LeftArrow, More } from "./src/res";
+import styled from "styled-components/native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.topBar}>
+    <Container>
+      <TopBar>
         <LeftArrow />
-        <View style={styles.topBarBox}>
+        <TopBarBox>
           <Add />
           <More />
-        </View>
-      </View>
-      <View style={styles.main}></View>
-      <View style={styles.bottomBar}>
-        <View style={styles.bottomBarBox}>
-          <Text style={}>타이머</Text>
-        </View>
-        <View style={styles.bottomBarBox}>
-          <Text>메트로놈</Text>
-        </View>
-      </View>
+        </TopBarBox>
+      </TopBar>
+
+      <MainContainer></MainContainer>
+
+      <BottomBar>
+        <BottomBarBox>
+          <LabelLarge>타이머</LabelLarge>
+        </BottomBarBox>
+        <BottomBarBox>
+          <LabelLarge>메트로놈</LabelLarge>
+        </BottomBarBox>
+      </BottomBar>
       <StatusBar style="auto" />
-    </View>
+    </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    paddingBottom: 24,
-    paddingTop: 24,
-  },
-  topBar: {
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingBottom: 8,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 8,
-    height: 48,
-    width: "100%",
-    flexDirection: "row",
-    backgroundColor: "#ff0",
-  },
-  topBarBox: {
-    flexDirection: "row",
-    gap: 12,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    width: "100%",
-    height: "100%",
-    padding: [40, 0],
-  },
-  bottomBar: {
-    width: "100%",
-    height: 48,
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 30,
-    flexDirection: "row",
-    padding: [10, 4],
-  },
-  bottomBarBox: {
-    padding: [8, 20],
-  },
-  
-});
+const Container = styled.View`
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard";
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 24px 0;
+  flex-direction: column;
+`;
+
+const TopBar = styled.View`
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 48px;
+  width: 100%;
+  background-color: #ff0;
+  flex-direction: row;
+`;
+const TopBarBox = styled.View`
+  flex-direction: row;
+  gap: 12px;
+`;
+
+const MainContainer = styled.View`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+  background-color: #ff0;
+`;
+
+const BottomBar = styled.View`
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-direction: row;
+  padding: 4px 10px;
+`;
+
+const BottomBarBox = styled.View`
+  padding: 4px 10px;
+`;
+
+const HeadingLarge = styled.Text`
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 80px;
+`;
+
+const HeadingLMedium = styled.Text`
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 64px;
+`;
+
+const HeadingSmall = styled.Text`
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 52px;
+`;
+
+const TitleLarge = styled.Text`
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+`;
+
+const titleMedium = styled.Text`
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+`;
+
+const TitleSmall = styled.Text`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+`;
+
+const BodyLarge = styled.Text`
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+`;
+
+const BodyMedium = styled.Text`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+`;
+
+const BodySmall = styled.Text`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+`;
+
+const BodyTiny = styled.Text`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+`;
+
+const LabelLarge = styled.Text`
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+`;
+
+const LabelMedium = styled.Text`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+`;
+
+const LabelSmall = styled.Text`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+`;
