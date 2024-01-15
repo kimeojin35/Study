@@ -7,7 +7,7 @@ function Topbar() {
     <View style={styles.topBar}>
       <Menu />
       <View style={styles.tmp} />
-      <Text>HAMBURG</Text>
+      <Text style={styles.header}>HAMBURG</Text>
       <View style={styles.tmp} />
       <Search />
     </View>
@@ -24,5 +24,8 @@ const styles = StyleSheet.create({
   },
   tmp: {
     flex: 1,
+  },
+  header: {
+    fontSize: 20,
   },
 });
