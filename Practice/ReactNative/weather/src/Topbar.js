@@ -19,13 +19,17 @@ export default Topbar;
 const styles = StyleSheet.create({
   topBar: {
     flexDirection: "row",
-    padding: 30,
+    paddingHorizontal: 30,
+    paddingVertical: 30,
     justifyContent: "space-between",
+    alignItems: "center",
   },
   tmp: {
     flex: 1,
   },
   header: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 24,
   },
 });
