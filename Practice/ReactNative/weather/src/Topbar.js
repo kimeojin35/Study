@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Menu, Search } from "./svg";
 
-function Topbar() {
+function Topbar({ city }) {
   return (
     <View style={styles.topBar}>
       <Menu />
       <View style={styles.tmp} />
-      <Text style={styles.header}>HAMBURG</Text>
+      <Text style={styles.header}>{city}</Text>
       <View style={styles.tmp} />
       <Search />
     </View>

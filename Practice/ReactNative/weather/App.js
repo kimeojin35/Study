@@ -1,11 +1,14 @@
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Topbar from "./src/Topbar";
 import Main from "./src/Main";
 
+const API_KEY = "9986b21f6fe19c3434ad6e289f78df17";
+
 export default function App() {
   const [city, setCity] = useState("Loading...");
+  const [days, setDays] = useState([]);
   const [location, setLocation] = useState();
   const [ok, setOk] = useState(true);
   const ask = async () => {
@@ -20,7 +23,12 @@ export default function App() {
       { latitude, longitude },
       { useGoogleMaps: false }
     );
-    setCity(location[0]);
+    setCity(location[0].city);
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+    );
+    const json = await response.json();
+    // setDays(json.daily);
   };
   useEffect(() => {
     ask();
@@ -28,18 +36,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Topbar />
+      <Topbar city={city} />
       <ScrollView
         pagingEnabled
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.mainBox}
       >
-        <Main />
-        <Main />
-        <Main />
-        <Main />
-        <Main />
+        {days.length === 0 ? "" : <Main />}
       </ScrollView>
       <View style={styles.pagenation}>
         <View style={styles.circle} />
