@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Dimensions } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-function Main() {
+function Main({ description, temp, emoji }) {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.dayBox}>
@@ -11,16 +11,13 @@ function Main() {
         <Text style={styles.date}>04 September</Text>
       </View>
       <View style={styles.tempBox}>
-        <View style={styles.lineBox}>
-          <View style={styles.line}></View>
-        </View>
+        <View style={styles.line}></View>
         <View style={styles.tempTextBox}>
-          <Text style={styles.tempTitle}>27˚</Text>
-          <Text style={styles.tempDescription}>Sunny</Text>
+          <Text style={styles.tempDescription}>{emoji}</Text>
+          <Text style={styles.tempTitle}>{temp}˚</Text>
+          <Text style={styles.tempDescription}>{description}</Text>
         </View>
-        <View style={styles.lineBox}>
-          <View style={styles.line}></View>
-        </View>
+        <View style={styles.line}></View>
       </View>
       <View style={styles.anotherBox}>
         <View style={styles.descriptionBox}>
@@ -56,14 +53,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "400",
   },
-  lineBox: {
-    width: "100%",
-    paddingVertical: 24,
-  },
   line: {
     height: 2,
     width: "100%",
     backgroundColor: "#000",
+    marginVertical: 24,
   },
   tmp: {
     flex: 1,
@@ -72,17 +66,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
   },
-  tempTextBox: {
-    paddingHorizontal: 20,
-  },
+  tempTextBox: {},
   tempTitle: {
-    fontSize: 160,
+    fontSize: 148,
     fontWeight: "600",
     lineHeight: 180,
   },
   tempDescription: {
     fontSize: 24,
     fontWeight: "400",
+    marginHorizontal: 20,
   },
   anotherBox: {
     paddingVertical: 20,

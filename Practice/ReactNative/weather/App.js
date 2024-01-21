@@ -1,17 +1,24 @@
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
-import Topbar from "./src/Topbar";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  ActivityIndicator,
+  Dimensions,
+} from "react-native";
 import Main from "./src/Main";
+import { Menu, Search } from "./src/svg";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const API_KEY = "9986b21f6fe19c3434ad6e289f78df17";
 
 export default function App() {
   const [city, setCity] = useState("Loading...");
   const [days, setDays] = useState([]);
-  const [location, setLocation] = useState();
   const [ok, setOk] = useState(true);
-  const ask = async () => {
+  const getWeather = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
     if (!granted) {
       setOk(false);
@@ -25,25 +32,50 @@ export default function App() {
     );
     setCity(location[0].city);
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
     );
     const json = await response.json();
-    // setDays(json.daily);
+    setDays(
+      json.list.filter((weather) => {
+        if (weather.dt_txt.includes("00:00:00")) {
+          return weather;
+        }
+      })
+    );
   };
   useEffect(() => {
-    ask();
+    getWeather();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Topbar city={city} />
+      <View style={styles.topBar}>
+        <Menu />
+        <View style={styles.tmp} />
+        <Text style={styles.header}>{city}</Text>
+        <View style={styles.tmp} />
+        <Search />
+      </View>
       <ScrollView
         pagingEnabled
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.mainBox}
       >
-        {days.length === 0 ? "" : <Main />}
+        {days.length === 0 ? (
+          <View style={styles.day}>
+            <ActivityIndicator color="white" size="large" />
+          </View>
+        ) : (
+          days.map((day, index) => (
+            <Main
+              key={index}
+              description={day.weather[0].main}
+              temp={parseFloat(day.main.temp).toFixed(1)}
+              emoji={day.weather[0].description}
+            />
+          ))
+        )}
       </ScrollView>
       <View style={styles.pagenation}>
         <View style={styles.circle} />
@@ -59,7 +91,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E4D0FF",
+    backgroundColor: "#04D0FF",
     justifyContent: "center",
     alignItems: "flex-start",
     paddingVertical: 10,
@@ -78,5 +110,29 @@ const styles = StyleSheet.create({
     backgroundColor: "#161820",
     opacity: 0.2,
     borderRadius: 8,
+  },
+
+  // Topbar
+  topBar: {
+    flexDirection: "row",
+    paddingHorizontal: 30,
+    paddingVertical: 30,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  tmp: {
+    flex: 1,
+  },
+  header: {
+    fontSize: 16,
+    fontWeight: "500",
+    lineHeight: 24,
+  },
+
+  // 임시
+  day: {
+    width: SCREEN_WIDTH,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
