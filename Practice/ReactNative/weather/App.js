@@ -14,6 +14,16 @@ import { Menu, Search } from "./src/svg";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const API_KEY = "9986b21f6fe19c3434ad6e289f78df17";
 
+const icons = {
+  Clouds: "cloudy",
+  Clear: "day-sunny",
+  Atmosphere: "cloudy-gusts",
+  Snow: "snow",
+  Rain: "rains",
+  Drizzle: "rain",
+  Thunderstorm: "lightning",
+};
+
 export default function App() {
   const [city, setCity] = useState("Loading...");
   const [days, setDays] = useState([]);

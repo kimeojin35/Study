@@ -1,3 +1,4 @@
+import { Fontisto } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 
@@ -13,7 +14,10 @@ function Main({ description, temp, emoji }) {
       <View style={styles.tempBox}>
         <View style={styles.line}></View>
         <View style={styles.tempTextBox}>
-          <Text style={styles.tempDescription}>{emoji}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.tempDescription}>{emoji}</Text>
+            <Fontisto name="cloudy" size={24} />
+          </View>
           <Text style={styles.tempTitle}>{temp}˚</Text>
           <Text style={styles.tempDescription}>{description}</Text>
         </View>
