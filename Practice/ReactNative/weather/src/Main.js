@@ -16,7 +16,7 @@ function Main({ description, temp, emoji }) {
         <View style={styles.tempTextBox}>
           <View style={{ flexDirection: "row" }}>
             <Text style={styles.tempDescription}>{emoji}</Text>
-            <Fontisto name="cloudy" size={24} />
+            <Fontisto name={icons[{ description }]} size={24} />
           </View>
           <Text style={styles.tempTitle}>{temp}˚</Text>
           <Text style={styles.tempDescription}>{description}</Text>
