@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoveBear2</title>
+    <style>
+      body {
+        background-color: #1d1e23;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      #trash {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right: 0;
+        top: 0;
+        border-radius: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="bear" width="80" src="/Bear.png" />
+    <div id="trash" class="droppable">
+      <img width="60" src="./Trash.png" />
+    </div>
+    <script>
+      let currentDroppable = null;
+      let bear = document.getElementById("bear");
+
+      bear.onmousedown = function (event) {
+        let shiftX = event.clientX - bear.getBoundingClientRect().left;
+        let shiftY = event.clientY - bear.getBoundingClientRect().top;
+
+        bear.style.position = "absolute";
+        bear.style.zIndex = 1000;
+        document.body.append(bear);
+
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+          bear.style.left = pageX - shiftX + "px";
+          bear.style.top = pageY - shiftY + "px";
+        }
+
+        function onMouseMove(event) {
+          moveAt(event.pageX, event.pageY);
+
+          bear.hidden = true;
+          let elemBelow = document.elementFromPoint(
+            event.clientX,
+            event.clientY
+          );
+          bear.hidden = false;
+
+          if (!elemBelow) return;
+
+          let droppableBelow = elemBelow.closest(".droppable");
+          if (currentDroppable != droppableBelow) {
+            if (currentDroppable) {
+              leaveDroppable(currentDroppable);
+            }
+            currentDroppable = droppableBelow;
+            if (currentDroppable) {
+              enterDroppable(currentDroppable);
+            }
+          }
+        }
+
+        document.addEventListener("mousemove", onMouseMove);
+
+        bear.onmouseup = function () {
+          document.removeEventListener("mousemove", onMouseMove);
+          bear.onmouseup = null;
+        };
+      };
+
+      function enterDroppable(elem) {
+        elem.style.background = "rgba(255, 255, 255, 0.2)";
+      }
+
+      function leaveDroppable(elem) {
+        elem.style.background = "";
+      }
+
+      bear.ondragstart = function () {
+        return false;
+      };
+    </script>
+  </body>
+</html>
