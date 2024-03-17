@@ -4,6 +4,16 @@ import { StyleSheet, View, Text, Dimensions } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
+const icons = {
+  Clouds: "cloudy",
+  Clear: "day-sunny",
+  Atmosphere: "cloudy-gusts",
+  Snow: "snow",
+  Rain: "rains",
+  Drizzle: "rain",
+  Thunderstorm: "lightning",
+};
+
 function Main({ description, temp, emoji }) {
   return (
     <View style={styles.mainContainer}>
