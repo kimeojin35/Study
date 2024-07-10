@@ -24,7 +24,6 @@ function Main({ description, temp, emoji }) {
       <View style={styles.tempBox}>
         <View style={styles.line}></View>
         <View style={styles.tempTextBox}>
-          aaa
           <View style={{ flexDirection: "row" }}>
             <Text style={styles.tempDescription}>{emoji}</Text>
             <Fontisto name={icons[{ description }]} size={24} />
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
   },
   tempTextBox: {},
   tempTitle: {
-    fontSize: 148,
+    fontSize: 120,
     fontWeight: "600",
     lineHeight: 180,
   },
