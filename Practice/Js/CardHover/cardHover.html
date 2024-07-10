@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: Pretendard;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        padding: 8px;
+      }
+
+      .container {
+        position: relative;
+        width: 320px;
+        height: 450px;
+        border-radius: 20px;
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 100%
+          ),
+          url("./Frame1732.png");
+        box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .grade {
+        color: #ff740e;
+        font-size: 20px;
+        font-weight: 700;
+        top: 24px;
+        left: 32px;
+        position: absolute;
+      }
+
+      .star1 {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        transition: transform 0.3s 0.1s ease-in-out;
+      }
+
+      .box {
+        width: 256px;
+        position: absolute;
+        bottom: 28px;
+        left: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transform: translateY(120px);
+        transition: transform 0.3s 0.1s ease-in-out;
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        align-self: stretch;
+      }
+
+      .major {
+        color: #ff740e;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .box2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+      }
+
+      .name {
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+      }
+
+      .detailbox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        opacity: 0%;
+        transition: 0.3s 0.3s ease-in-out;
+      }
+
+      .about {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        transition: 0.3s 0.1s ease-in-out;
+      }
+
+      .detail {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .box3 {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        align-self: stretch;
+        gap: 8px;
+        opacity: 0%;
+        transition: 0.3s 0.5s ease-in-out;
+      }
+
+      .nick {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .star2 {
+        opacity: 0%;
+        width: 1px;
+        height: 1px;
+        transition: 0.3s 0.1s ease-in-out;
+      }
+
+      .container:hover .box {
+        transform: translateY(0);
+      }
+
+      .container:hover .star1 {
+        transform: translateY(-60px) translateX(60px) rotate(90deg);
+      }
+
+      .container:hover .star2 {
+        transform: rotate(360deg);
+        width: 28px;
+        height: 28px;
+        opacity: 100%;
+      }
+      .container:hover .detailbox {
+        opacity: 100%;
+      }
+
+      .container:hover .box3 {
+        opacity: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="grade">1학년</p>
+      <img class="star1" src="./Shapes.svg" />
+      <div class="box">
+        <div class="title">
+          <p class="major">Baekend</p>
+          <div class="box2">
+            <p class="name">이태영</p>
+            <img class="star2" src="./Shapes2.svg" />
+          </div>
+        </div>
+        <div class="detailbox">
+          <p class="about">ABOUT</p>
+          <p class="detail">
+            쉽지 않은 사용자 경험을 중요시하는 배젠드 데브오브즈 햄스터입니다.
+          </p>
+        </div>
+        <div class="box3">
+          <p class="nick">@Hamster</p>
+          <img class="github" src="./github.svg" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

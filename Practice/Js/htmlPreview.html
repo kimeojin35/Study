@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML 태그 미리보기</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      textarea,
+      #area {
+        width: 400px;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      #area {
+        height: 150px;
+        overflow-y: auto;
+        background-color: #fff;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="ta" cols="30" rows="10"></textarea>
+    <button id="btn">내용 복사</button>
+    <div id="area"></div>
+
+    <script>
+      document.querySelector("#btn").addEventListener("click", function () {
+        var area = document.querySelector("#area");
+        area.innerHTML = document.querySelector("#ta").value;
+        nodeScriptReplace(area);
+      });
+
+      function nodeScriptReplace(node) {
+        if (nodeScriptIs(node) === true) {
+          node.parentNode.replaceChild(nodeScriptClone(node), node);
+        } else {
+          var i = -1,
+            children = node.childNodes;
+          while (++i < children.length) {
+            nodeScriptReplace(children[i]);
+          }
+        }
+        return node;
+      }
+
+      function nodeScriptClone(node) {
+        var script = document.createElement("script");
+        script.text = node.innerHTML;
+
+        var i = -1,
+          attrs = node.attributes,
+          attr;
+        while (++i < attrs.length) {
+          script.setAttribute((attr = attrs[i]).name, attr.value);
+        }
+        return script;
+      }
+
+      function nodeScriptIs(node) {
+        return node.tagName === "SCRIPT";
+      }
+    </script>
+  </body>
+</html>
